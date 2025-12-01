@@ -1,0 +1,18 @@
+# The Lucky 7 Café Website
+
+A modern, responsive website for **The Lucky 7 Café**, built to showcase the menu, café environment, customer services, and online ordering features. This project aims to promote the café brand and provide customers with an easy way to explore food items and make reservations.
+
+## ✨ Features
+- Beautiful Café Home Page  
+- Online Menu Display (Food & Drinks)  
+- Table Reservation System  
+- Gallery Section  
+- Contact Form  
+- Customer Reviews  
+- Responsive Design (Mobile Friendly)
+
+## 🛠️ Tech Stack
+- **Frontend:** HTML, CSS, JavaScript  
+- **Backend (optional):** PHP / Node.js / Django  
+- **Database (optional):** MySQL / MongoDB  
+- **Tools:** Git, GitHub, VS Code
