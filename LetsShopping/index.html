@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Shopping</title>
+<body>
+    <div id="auth-modal">
+        <fieldset class="signup-fieldset">
+            <legend>
+                <h2>Login / Signup</h2>
+            </legend>
+            <div class="container">
+                <form id="signup-form" class="Signup-form">
+                    <h1>SIGNUP FORM</h1>
+                    <input type="text" id="signup-name" placeholder="Full Name" required>
+                    <input type="email" id="signup-email" placeholder="Email" required>
+                    <input type="password" id="signup-password" placeholder="Password" required>
+                    <button type="submit" class="submit">Create Account</button>
+                    <div class="already" id="show-login">Already have an Account?</div>
+                </form>
+                <form id="login-form" class="Signup-form" style="display:none;">
+                    <h1>LOGIN</h1>
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit" class="submit">Login</button>
+                    <div class="already" id="show-signup">Don't have an Account?</div>
+                </form>
+                <div id="auth-error" style="color:red;text-align:center;display:none;margin-top:8px;"></div>
+            </div>
+        </fieldset>
+    </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="style.css">
+
+<body>
+    <div id="main-content" style="display:none;">
+    <header>
+        <div class="navbar">
+            <div class="nav-logo border" style="display: flex; align-items: center; gap: 10px;">
+                <div class="logo"></div>
+                <span class="lets-shopping">Shopping</span>
+            </div>
+            <div class="nav-address border">
+
+
+
+                <p class="add-first">Deliver to</p>
+                <div class="add-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p class="add-sec">
+                        India
+                    </p>
+                </div>
+            </div>
+
+            <form class="nav-search" id="google-search-form" onsubmit="return googleSearch(event)">
+                <select class="search-select">
+                    <option>All</option>
+                </select>
+                <input placeholder="Let's Shopping" class="search-input" id="google-search-input">
+                <button type="submit" class="search-icon" style="background:none;border:none;cursor:pointer;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+
+            <div class="nav-sign border">
+                <p><span>Hello, sign in</span></p>
+                <p class="nav-second">Account & Lists</p>
+            </div>
+
+
+            <div class="nav-return border">
+                <p><span>Return</span></p>
+                <p class="nav-second">& Orders</p>
+            </div>
+        
+    <a href="index1.html" class="nav-cart border" id="cart-link" style="text-decoration:none; color:inherit; cursor:pointer;">
+    <i class="fa-solid fa-cart-arrow-down"></i>
+    Cart <span id="cart-count"></span>
+</a>
+</div>
+        </div> <!-- close navbar -->
+        <div class="panel">
+            <div class="panel-all">
+                <i class="fa-solid fa-bars"></i>
+                All
+            </div>
+            <div class="panel-ops">
+                <p>Today's Deals</p>
+                <p>Customer Service</p>
+                <p>Registry</p>
+                <p>Gift Cards</p>
+                <p>Sell</p>
+            </div>
+            <div class="panel-deals">
+                Shop Deals in Electronic
+            </div>
+        </div>
+    </header>
+    <div class="hero-section">
+        <div class="hero-msg">
+            <p>You are on amazon.com. You can also shop on Amazon India for millions of products with fast local
+                delivery. <a>Click here to go to amazon.in</a></p>
+        </div>
+    </div>
+    <div class="shop-section">
+        <div class="box1 box">
+            <div class="box-content">
+                <h2>Health & Personal Care</h2>
+                <div class="box-img1" ></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+        </div>
+        <div class="box2 box">
+            <div class="box-content">
+                <h2>Samsung Galaxy s24</h2>
+                <div class="box-img2"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+        </div>
+        <div class="box3 box">
+            <div class="box-content">
+                <h2>Makeup Kit</h2>
+                <div class="box-img3"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+
+        </div>
+        <div class="box4 box">
+            <div class="box-content">
+                <h2>Working Desk</h2>
+                <div class="box-img4"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+        </div>
+
+        <div class="box1 box">
+            <div class="box-content">
+                <h2>Clothes</h2>
+                <div class="box-img5"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+        </div>
+        <div class="box2 box">
+            <div class="box-content">
+                <h2>Chairs</h2>
+                <div class="box-img6"></div>
+                <a class="shop-btn"
+                    href="">Shop now</a>
+            </div>
+        </div>
+        <div class="box3 box">
+            <div class="box-content">
+                <h2>Dog & Cat</h2>
+                <div class="box-img7"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+
+        </div>
+        <div class="box4 box">
+            <div class="box-content">
+                <h2>Bottle</h2>
+                <div class="box-img4"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+        </div>
+
+
+        <div class="box1 box">
+            <div class="box-content">
+                <h2>Refrigerator</h2>
+                <div class="box-img9"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+        </div>
+        <div class="box2 box">
+            <div class="box-content">
+                <h2>Scanning Camera</h2>
+                <div class="box-img10"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+        </div>
+        <div class="box3 box">
+            <div class="box-content">
+                <h2>Headphones</h2>
+                <div class="box-img11"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+
+        </div>
+        <div class="box4 box">
+            <div class="box-content">
+                <h2>Smart Pen</h2>
+                <div class="box-img12"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+        </div>
+
+        <div class="box1 box">
+            <div class="box-content">
+                <h2>Smart Bag</h2>
+                <div class="box-img13"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+        </div>
+        <div class="box2 box">
+            <div class="box-content">
+                <h2>Smart watch</h2>
+                <div class="box-img14"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+        </div>
+        <div class="box3 box">
+            <div class="box-content">
+                <h2>Double Bottle</h2>
+                <div class="box-img15"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+
+        </div>
+        <div class="box4 box">
+            <div class="box-content">
+                <h2>iPhone 15+</h2>
+                <div class="box-img16"></div>
+                <a class="shop-btn"
+                    href="">Shop
+                    now</a>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <div class="foot-top">
+            <p>
+            <h3>See personalized recommendations</h3>
+            </p>
+            <div class="foot-icon">
+                <button id="ad">sign in</button>
+                <p>New customer?</p>
+                <p>Start here</p>
+
+
+            </div>
+
+            <div class="foot-panel1">
+                Back to Top
+            </div>
+            <div class="foot-panel2">
+                <ul>
+                    <p>Get to Know Us</p>
+                    <a> Careers</a>
+                    <a>About Amazon</a>
+                    <a> Investor Relations</a>
+                    <a>Amazon Device </a>
+                    <a>Amazon Science</a>
+                </ul>
+                <ul>
+                    <p>Connect with Us</p>
+                    <a>Facebook </a>
+                    <a>Twitter</a>
+                    <a> Instagram</a>
+
+                </ul>
+                <ul>
+                    <p>Make Money with Us</p>
+                    <a> Sell on Amazon</a>
+                    <a>Sell under Amazon Accelerator</a>
+                    <a> Protect and Build Your Brand</a>
+                    <a> Amazon Global Selling</a>
+                    <a>Supply to Amazon</a>
+                    <a>Become an Affiliate</a>
+                    <a>Fulfilment by Amazon</a>
+                    <a>Advertise Your Products</a>
+                    <a>Amazon Pay on Merchants</a>
+                </ul>
+                <ul>
+                    <p>Let Us Help You</p>
+                    <a>Your Account </a>
+                    <a>Returns Centre</a>
+                    <a> Recalls and Product Safety Alerts</a>
+                    <a>100% Purchase Protection </a>
+                    <a>Amazon App Download</a>
+                    <a>Help</a>
+                </ul>
+            </div>
+            <div class="foot-panel3">
+                <div class="logo"></div>
+
+            </div>
+            <div class="foot-panel4">
+                <div class="pages">
+                    <a>Condition of Use</a>
+                    <a>Privacy Notice</a>
+                    <a> Your Ads Privacy Choices</a>
+                </div>
+                <div class="copyright">
+                    © 1996-2025, Amazon.com, Inc. or its affiliates
+                </div>
+            </div>
+    </footer>
+    </div>
+
+
+    <script>
+        // Show login/signup modal, hide main content
+        document.getElementById('main-content').style.display = 'none';
+        document.getElementById('auth-modal').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+
+        // Google search logic
+        function googleSearch(e) {
+            e.preventDefault();
+            var query = document.getElementById('google-search-input').value.trim();
+            if (query) {
+                window.open('https://www.google.com/search?q=' + encodeURIComponent(query), '_blank');
+            }
+            return false;
+        }
+
+        // Switch between signup and login forms
+        document.getElementById('show-login').onclick = function() {
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'flex';
+            document.getElementById('auth-error').style.display = 'none';
+        };
+        document.getElementById('show-signup').onclick = function() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'flex';
+            document.getElementById('auth-error').style.display = 'none';
+        };
+
+        // Demo signup logic
+        document.getElementById('signup-form').onsubmit = function(e) {
+            e.preventDefault();
+            var name = document.getElementById('signup-name').value.trim();
+            var email = document.getElementById('signup-email').value.trim();
+            var pass = document.getElementById('signup-password').value.trim();
+            if (name && email && pass) {
+                document.getElementById('auth-modal').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                document.body.style.overflow = '';
+            } else {
+                var err = document.getElementById('auth-error');
+                err.innerText = 'Please fill all fields.';
+                err.style.display = 'block';
+            }
+        };
+        // Demo login logic (email: admin@admin.com, password: admin)
+        document.getElementById('login-form').onsubmit = function(e) {
+            e.preventDefault();
+            var email = document.getElementById('login-email').value.trim();
+            var pass = document.getElementById('login-password').value.trim();
+            if (email === 'admin@admin.com' && pass === 'admin') {
+                document.getElementById('auth-modal').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                document.body.style.overflow = '';
+            } else {
+                var err = document.getElementById('auth-error');
+                err.innerText = 'Invalid email or password! (Try admin@admin.com / admin)';
+                err.style.display = 'block';
+            }
+        };
+        // ...existing code...
+
+// Cart logic
+let cartCount = 0;
+document.querySelectorAll('.shop-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        cartCount++;
+        document.getElementById('cart-count').innerText = cartCount;
+    
+    });
+});
+// Footer sign in button se bhi login modal kholna
+document.getElementById('ad').onclick = function() {
+    document.getElementById('auth-modal').style.display = 'block';
+    document.getElementById('main-content').style.display = 'none';
+    document.body.style.overflow = 'hidden';
+};
+cartCount = cartItems.length;
+document.getElementById('cart-count').innerText = cartCount;
+
+document.querySelectorAll('.shop-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        let product = this.parentElement.querySelector('h2').innerText;
+        cartItems.push(product);
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        cartCount = cartItems.length;
+        document.getElementById('cart-count').innerText = cartCount;
+    });
+});
+
+
+
+        
+    </script>
+</body>
+
+</html>

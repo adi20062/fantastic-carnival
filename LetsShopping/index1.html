@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cart-container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .cart-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .cart-items {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        .empty-cart {
+            color: #888;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <div class="cart-title">Your Cart</div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="empty-cart" id="empty-cart">Your cart is empty.</div>
+        <a href="index.html" style="text-decoration:none;color:#fff;background:#ff9900;padding:10px 24px;border-radius:6px;">Back to Shopping</a>
+    </div>
+    <script>
+        // Cart items show karo (localStorage se)
+        let items = JSON.parse(localStorage.getItem('cartItems') || '[]');
+        let cartDiv = document.getElementById('cart-items');
+        let emptyDiv = document.getElementById('empty-cart');
+        if(items.length > 0){
+            cartDiv.innerHTML = items.map(item => `<div>${item}</div>`).join('');
+            emptyDiv.style.display = 'none';
+        } else {
+            cartDiv.style.display = 'none';
+        }
+        let cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+         let cartCount = 0;
+  function addToCart() {
+    cartCount++;
+    document.querySelector('.cart-count').textContent = cartCount;
+  }
+// ...existing code...
+
+// Cart logic (SIRF YAHI RAKHO, purana hata do)
+cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+cartCount = cartItems.length;
+document.getElementById('cart-count').innerText = cartCount;
+
+document.querySelectorAll('.shop-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        let product = this.parentElement.querySelector('h2').innerText;
+        cartItems.push(product);
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        cartCount = cartItems.length;
+        document.getElementById('cart-count').innerText = cartCount;
+    });
+});
+
+// Footer sign in button se bhi login modal kholna
+document.getElementById('ad').onclick = function() {
+    document.getElementById('auth-modal').style.display = 'block';
+    document.getElementById('main-content').style.display = 'none';
+    document.body.style.overflow = 'hidden';
+};
+
+// ...existing code...
+    </script>
+</body>
+</html>
