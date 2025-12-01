@@ -1,0 +1,2585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Manang Mant - Premium Mountain Resort</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e0f2fe" width="1200" height="600"/><polygon fill="%23b3e5fc" points="0,600 300,400 600,500 900,300 1200,400 1200,600"/><polygon fill="%2381d4fa" points="0,600 200,450 500,550 800,350 1200,450 1200,600"/><circle fill="%23fff" cx="100" cy="100" r="30"/><rect fill="%23795548" x="400" y="350" width="400" height="200" rx="10"/><rect fill="%23d32f2f" x="420" y="330" width="360" height="30"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .room-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #3b82f6;
+            transition: color 0.3s ease;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Attractive Button Animations */
+        .btn-primary {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            transform: translateY(0);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(45deg, #1d4ed8, #3b82f6);
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #3b82f6;
+            color: #3b82f6;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #3b82f6;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-secondary:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-secondary:hover::before {
+            left: 0;
+        }
+        
+        /* Card Hover Animations */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: inherit;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-hover:hover::before {
+            opacity: 1;
+        }
+        
+        /* Floating Animation */
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Pulse Animation */
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
+        }
+        
+        /* Gradient Text Animation */
+        .gradient-text {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Icon Bounce */
+        .icon-bounce:hover {
+            animation: bounce 0.6s ease;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        /* Slide In Animations */
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Stagger Animation */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+        
+        /* Loading Animation */
+        .loading-dots::after {
+            content: '';
+            animation: loadingDots 1.5s infinite;
+        }
+        
+        @keyframes loadingDots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        
+        .mountain-svg {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><polygon fill="%23e3f2fd" points="0,200 100,50 200,100 300,30 400,80 400,200"/><polygon fill="%23bbdefb" points="0,200 80,80 180,120 280,60 400,100 400,200"/></svg>');
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-blue-600">🏨 Hotel Manang Mant</h1>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="#rooms" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Rooms</a>
+                    <a href="#facilities" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Facilities</a>
+                    <a href="#gallery" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Gallery</a>
+                    <a href="#attractions" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Attractions</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                    <button onclick="showLogin()" class="btn-primary text-white px-4 py-2 rounded-lg">
+                        <i class="fas fa-sign-in-alt mr-1"></i>Login
+                    </button>
+                    <button onclick="showAdminLogin()" class="btn-secondary bg-green-600 border-green-600 text-white px-4 py-2 rounded-lg ml-2 hover:bg-green-700">
+                        <i class="fas fa-user-shield mr-1"></i>Admin
+                    </button>
+                </div>
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700">Home</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700">About</a>
+                <a href="#rooms" class="block px-3 py-2 text-gray-700">Rooms</a>
+                <a href="#facilities" class="block px-3 py-2 text-gray-700">Facilities</a>
+                <a href="#gallery" class="block px-3 py-2 text-gray-700">Gallery</a>
+                <a href="#attractions" class="block px-3 py-2 text-gray-700">Attractions</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700">Contact</a>
+                <button onclick="showLogin()" class="block w-full text-left px-3 py-2 text-blue-600">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Required Section -->
+    <section id="loginSection" class="min-h-screen bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center text-white" style="display: none;">
+        <div class="text-center px-4 max-w-2xl mx-auto">
+            <div class="mb-8">
+                <h1 class="text-6xl md:text-8xl font-bold mb-4">🏨</h1>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Hotel Manang Mant</h1>
+                <p class="text-xl md:text-2xl mb-8">Welcome to your Himalayan retreat! Please login to explore our services and make reservations.</p>
+            </div>
+            
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-8 mb-8">
+                <h2 class="text-2xl font-bold mb-6">🔐 Access Required</h2>
+                <p class="text-lg mb-6">To ensure the best experience and secure bookings, please login or create an account to continue.</p>
+                
+                <div class="space-y-4">
+                    <button onclick="showLogin()" class="w-full btn-primary bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold pulse-glow">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login to Continue
+                    </button>
+                    <button onclick="showRegister()" class="w-full btn-secondary bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold">
+                        <i class="fas fa-user-plus mr-2"></i>Create New Account
+                    </button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+                    <i class="fas fa-mountain text-3xl mb-3"></i>
+                    <p class="font-semibold">Himalayan Views</p>
+                    <p class="text-sm">Breathtaking mountain scenery</p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+                    <i class="fas fa-bed text-3xl mb-3"></i>
+                    <p class="font-semibold">Luxury Rooms</p>
+                    <p class="text-sm">Comfortable accommodation</p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+                    <i class="fas fa-hiking text-3xl mb-3"></i>
+                    <p class="font-semibold">Adventure Tours</p>
+                    <p class="text-sm">Guided trekking packages</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Home Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-teal-900/20"></div>
+        <div class="text-center px-4 fade-in relative z-10">
+            <div class="float mb-8">
+                <h1 class="text-6xl md:text-8xl mb-4">🏔️</h1>
+            </div>
+            <h1 class="gradient-text text-5xl md:text-7xl font-bold mb-6 slide-in-left">Welcome to Hotel Manang Mant</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto slide-in-right">Experience luxury in the heart of the Himalayas. Your perfect mountain getaway awaits with breathtaking views and world-class hospitality.</p>
+            <div class="space-x-4 mb-8">
+                <button onclick="showBooking()" class="btn-primary text-white px-8 py-4 rounded-lg text-lg font-semibold pulse-glow">
+                    <i class="fas fa-calendar-check mr-2"></i>Book Now
+                </button>
+                <a href="#rooms" class="btn-secondary text-white px-8 py-4 rounded-lg text-lg font-semibold inline-block">
+                    <i class="fas fa-bed mr-2"></i>View Rooms
+                </a>
+            </div>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-6 card-hover fade-in stagger-1">
+                    <i class="fas fa-phone text-3xl mb-3 icon-bounce"></i>
+                    <p class="font-semibold">Call Us</p>
+                    <p>+91 98765 43210</p>
+                </div>
+                <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-6 card-hover fade-in stagger-2">
+                    <i class="fas fa-envelope text-3xl mb-3 icon-bounce"></i>
+                    <p class="font-semibold">Email</p>
+                    <p>info@hotelmanangmant.com</p>
+                </div>
+                <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-6 card-hover fade-in stagger-3">
+                    <i class="fas fa-map-marker-alt text-3xl mb-3 icon-bounce"></i>
+                    <p class="font-semibold">Location</p>
+                    <p>Manang, Nepal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">About Hotel Manang Mant</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Our Story</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Established in 2015, Hotel Manang Mant has been a beacon of hospitality in the beautiful Manang region. Located at the heart of the Annapurna Circuit, our hotel offers an authentic Himalayan experience with modern comforts.
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Our name "Manang Mant" reflects our deep connection to the local culture and our commitment to preserving the natural beauty of this magnificent region while providing world-class accommodation to travelers from around the globe.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600">500+</div>
+                            <div class="text-gray-600">Happy Guests</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600">8</div>
+                            <div class="text-gray-600">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mountain-svg bg-cover bg-center h-96 rounded-lg shadow-lg"></div>
+            </div>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-blue-50 p-8 rounded-lg">
+                    <h4 class="text-xl font-bold text-gray-800 mb-4">🎯 Our Mission</h4>
+                    <p class="text-gray-600">To provide exceptional hospitality while promoting sustainable tourism and preserving the natural and cultural heritage of Manang.</p>
+                </div>
+                <div class="bg-blue-50 p-8 rounded-lg">
+                    <h4 class="text-xl font-bold text-gray-800 mb-4">👁️ Our Vision</h4>
+                    <p class="text-gray-600">To be the premier destination for travelers seeking authentic Himalayan experiences with luxury and comfort.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Rooms & Suites</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Choose from our carefully designed rooms, each offering stunning mountain views and modern amenities for your comfort.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Standard Room -->
+                <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in stagger-1">
+                    <div class="relative h-48 overflow-hidden cursor-pointer" onclick="openRoomGallery('standard')">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full hover:translate-x-full transition-transform duration-1000"></div>
+                        <svg class="w-full h-full object-cover" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Room Background -->
+                            <rect width="400" height="200" fill="url(#standardRoomGradient)"/>
+                            <!-- Floor -->
+                            <rect x="0" y="150" width="400" height="50" fill="#8B4513"/>
+                            <!-- Bed -->
+                            <rect x="50" y="100" width="120" height="60" rx="5" fill="#4A5568"/>
+                            <rect x="45" y="95" width="130" height="15" rx="7" fill="#E2E8F0"/>
+                            <rect x="55" y="85" width="110" height="20" rx="10" fill="#F7FAFC"/>
+                            <!-- Pillows -->
+                            <ellipse cx="85" cy="90" rx="15" ry="8" fill="#CBD5E0"/>
+                            <ellipse cx="135" cy="90" rx="15" ry="8" fill="#CBD5E0"/>
+                            <!-- Side Table -->
+                            <rect x="180" y="120" width="30" height="40" rx="3" fill="#8B4513"/>
+                            <rect x="175" y="115" width="40" height="5" rx="2" fill="#A0522D"/>
+                            <!-- Lamp -->
+                            <rect x="190" y="105" width="3" height="15" fill="#2D3748"/>
+                            <ellipse cx="191.5" cy="102" rx="8" ry="5" fill="#F7FAFC"/>
+                            <!-- Window -->
+                            <rect x="280" y="40" width="80" height="80" rx="5" fill="#87CEEB"/>
+                            <rect x="285" y="45" width="70" height="70" rx="3" fill="#E0F6FF"/>
+                            <line x1="320" y1="45" x2="320" y2="115" stroke="#B0C4DE" stroke-width="2"/>
+                            <line x1="285" y1="80" x2="355" y2="80" stroke="#B0C4DE" stroke-width="2"/>
+                            <!-- Mountain View -->
+                            <polygon points="290,70 310,50 330,65 350,45 350,75 290,75" fill="#4A5568"/>
+                            <!-- Chair -->
+                            <rect x="240" y="130" width="25" height="30" rx="2" fill="#8B4513"/>
+                            <rect x="235" y="125" width="35" height="5" rx="2" fill="#A0522D"/>
+                            <rect x="245" y="115" width="15" height="15" rx="2" fill="#A0522D"/>
+                            <!-- TV -->
+                            <rect x="20" y="70" width="40" height="25" rx="2" fill="#2D3748"/>
+                            <rect x="25" y="75" width="30" height="15" rx="1" fill="#1A202C"/>
+                            <!-- Curtains -->
+                            <rect x="275" y="30" width="10" height="90" fill="#DC143C"/>
+                            <rect x="355" y="30" width="10" height="90" fill="#DC143C"/>
+                            <defs>
+                                <linearGradient id="standardRoomGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#F0F8FF"/>
+                                    <stop offset="100%" style="stop-color:#E6F3FF"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                            <div class="text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-search-plus text-2xl mb-2"></i>
+                                <p class="text-sm">View Gallery</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Standard Room</h3>
+                        <p class="text-gray-600 mb-4">Comfortable accommodation with essential amenities and mountain views.</p>
+                        <ul class="text-sm text-gray-600 mb-4 space-y-1">
+                            <li><i class="fas fa-wifi text-blue-600 mr-2 icon-bounce"></i>Free WiFi</li>
+                            <li><i class="fas fa-snowflake text-blue-600 mr-2 icon-bounce"></i>Air Conditioning</li>
+                            <li><i class="fas fa-tv text-blue-600 mr-2 icon-bounce"></i>LED TV</li>
+                            <li><i class="fas fa-tint text-blue-600 mr-2 icon-bounce"></i>Hot Water</li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <div class="text-2xl font-bold gradient-text">₹2,500<span class="text-sm text-gray-500">/night</span></div>
+                            <button onclick="bookRoom('Standard Room')" class="btn-primary text-white px-4 py-2 rounded-lg">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deluxe Room -->
+                <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in stagger-2">
+                    <div class="relative h-48 overflow-hidden cursor-pointer" onclick="openRoomGallery('deluxe')">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full hover:translate-x-full transition-transform duration-1000"></div>
+                        <svg class="w-full h-full object-cover" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Room Background -->
+                            <rect width="400" height="200" fill="url(#deluxeRoomGradient)"/>
+                            <!-- Luxury Floor -->
+                            <rect x="0" y="160" width="400" height="40" fill="#654321"/>
+                            <rect x="0" y="155" width="400" height="5" fill="#8B4513"/>
+                            <!-- King Size Bed -->
+                            <rect x="40" y="90" width="150" height="70" rx="8" fill="#2D3748"/>
+                            <rect x="35" y="85" width="160" height="20" rx="10" fill="#E2E8F0"/>
+                            <rect x="45" y="75" width="140" height="25" rx="12" fill="#F7FAFC"/>
+                            <!-- Luxury Pillows -->
+                            <ellipse cx="75" cy="82" rx="18" ry="10" fill="#CBD5E0"/>
+                            <ellipse cx="115" cy="82" rx="18" ry="10" fill="#CBD5E0"/>
+                            <ellipse cx="155" cy="82" rx="18" ry="10" fill="#CBD5E0"/>
+                            <!-- Bedside Tables -->
+                            <rect x="200" y="110" width="35" height="50" rx="4" fill="#8B4513"/>
+                            <rect x="195" y="105" width="45" height="8" rx="4" fill="#A0522D"/>
+                            <rect x="10" y="110" width="35" height="50" rx="4" fill="#8B4513"/>
+                            <rect x="5" y="105" width="45" height="8" rx="4" fill="#A0522D"/>
+                            <!-- Luxury Lamps -->
+                            <rect x="217" y="95" width="4" height="20" fill="#2D3748"/>
+                            <ellipse cx="219" cy="90" rx="12" ry="8" fill="#F7FAFC"/>
+                            <rect x="27" y="95" width="4" height="20" fill="#2D3748"/>
+                            <ellipse cx="29" cy="90" rx="12" ry="8" fill="#F7FAFC"/>
+                            <!-- Large Window with Balcony -->
+                            <rect x="260" y="30" width="120" height="100" rx="8" fill="#87CEEB"/>
+                            <rect x="265" y="35" width="110" height="90" rx="5" fill="#E0F6FF"/>
+                            <line x1="320" y1="35" x2="320" y2="125" stroke="#B0C4DE" stroke-width="3"/>
+                            <line x1="265" y1="80" x2="375" y2="80" stroke="#B0C4DE" stroke-width="3"/>
+                            <!-- Mountain Panorama -->
+                            <polygon points="270,65 290,40 310,55 330,35 350,50 370,30 375,70 270,70" fill="#4A5568"/>
+                            <polygon points="275,70 295,50 315,60 335,45 355,55 370,40 375,75 275,75" fill="#2C5282"/>
+                            <!-- Balcony Railing -->
+                            <rect x="260" y="125" width="120" height="5" fill="#8B4513"/>
+                            <rect x="265" y="130" width="5" height="15" fill="#8B4513"/>
+                            <rect x="285" y="130" width="5" height="15" fill="#8B4513"/>
+                            <rect x="305" y="130" width="5" height="15" fill="#8B4513"/>
+                            <rect x="325" y="130" width="5" height="15" fill="#8B4513"/>
+                            <rect x="345" y="130" width="5" height="15" fill="#8B4513"/>
+                            <rect x="365" y="130" width="5" height="15" fill="#8B4513"/>
+                            <!-- Luxury Chair -->
+                            <rect x="220" y="140" width="30" height="35" rx="3" fill="#8B4513"/>
+                            <rect x="215" y="135" width="40" height="8" rx="4" fill="#A0522D"/>
+                            <rect x="225" y="120" width="20" height="20" rx="3" fill="#A0522D"/>
+                            <!-- Smart TV -->
+                            <rect x="80" y="50" width="60" height="35" rx="3" fill="#2D3748"/>
+                            <rect x="85" y="55" width="50" height="25" rx="2" fill="#1A202C"/>
+                            <!-- Mini Bar -->
+                            <rect x="300" y="140" width="40" height="25" rx="2" fill="#4A5568"/>
+                            <rect x="305" y="135" width="30" height="5" rx="2" fill="#2D3748"/>
+                            <!-- Luxury Curtains -->
+                            <rect x="255" y="20" width="15" height="110" fill="#8B0000"/>
+                            <rect x="375" y="20" width="15" height="110" fill="#8B0000"/>
+                            <defs>
+                                <linearGradient id="deluxeRoomGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#F8F4FF"/>
+                                    <stop offset="100%" style="stop-color:#E9D8FD"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                            <div class="text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-search-plus text-2xl mb-2"></i>
+                                <p class="text-sm">View Gallery</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Deluxe Room</h3>
+                        <p class="text-gray-600 mb-4">Spacious room with premium amenities and panoramic mountain views.</p>
+                        <ul class="text-sm text-gray-600 mb-4 space-y-1">
+                            <li><i class="fas fa-wifi text-blue-600 mr-2 icon-bounce"></i>Free WiFi</li>
+                            <li><i class="fas fa-snowflake text-blue-600 mr-2 icon-bounce"></i>Air Conditioning</li>
+                            <li><i class="fas fa-tv text-blue-600 mr-2 icon-bounce"></i>Smart TV</li>
+                            <li><i class="fas fa-coffee text-blue-600 mr-2 icon-bounce"></i>Mini Bar</li>
+                            <li><i class="fas fa-mountain text-blue-600 mr-2 icon-bounce"></i>Balcony</li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <div class="text-2xl font-bold gradient-text">₹4,000<span class="text-sm text-gray-500">/night</span></div>
+                            <button onclick="bookRoom('Deluxe Room')" class="btn-primary text-white px-4 py-2 rounded-lg">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family Suite -->
+                <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in stagger-3">
+                    <div class="relative h-48 overflow-hidden cursor-pointer" onclick="openRoomGallery('family')">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full hover:translate-x-full transition-transform duration-1000"></div>
+                        <svg class="w-full h-full object-cover" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Room Background -->
+                            <rect width="400" height="200" fill="url(#familyRoomGradient)"/>
+                            <!-- Floor -->
+                            <rect x="0" y="170" width="400" height="30" fill="#8B4513"/>
+                            <!-- Living Area Sofa -->
+                            <rect x="20" y="120" width="80" height="40" rx="5" fill="#4A5568"/>
+                            <rect x="15" y="115" width="90" height="10" rx="5" fill="#2D3748"/>
+                            <!-- Sofa Cushions -->
+                            <rect x="25" y="110" width="15" height="15" rx="3" fill="#CBD5E0"/>
+                            <rect x="45" y="110" width="15" height="15" rx="3" fill="#CBD5E0"/>
+                            <rect x="65" y="110" width="15" height="15" rx="3" fill="#CBD5E0"/>
+                            <rect x="85" y="110" width="15" height="15" rx="3" fill="#CBD5E0"/>
+                            <!-- Coffee Table -->
+                            <rect x="35" y="140" width="50" height="25" rx="3" fill="#8B4513"/>
+                            <rect x="30" y="135" width="60" height="5" rx="2" fill="#A0522D"/>
+                            <!-- Master Bed -->
+                            <rect x="120" y="80" width="100" height="50" rx="5" fill="#2D3748"/>
+                            <rect x="115" y="75" width="110" height="15" rx="7" fill="#E2E8F0"/>
+                            <rect x="125" y="65" width="90" height="20" rx="10" fill="#F7FAFC"/>
+                            <!-- Master Bed Pillows -->
+                            <ellipse cx="145" cy="72" rx="12" ry="6" fill="#CBD5E0"/>
+                            <ellipse cx="175" cy="72" rx="12" ry="6" fill="#CBD5E0"/>
+                            <ellipse cx="195" cy="72" rx="12" ry="6" fill="#CBD5E0"/>
+                            <!-- Kids Bunk Bed -->
+                            <rect x="240" y="100" width="60" height="30" rx="3" fill="#4A5568"/>
+                            <rect x="235" y="95" width="70" height="8" rx="4" fill="#E2E8F0"/>
+                            <rect x="240" y="130" width="60" height="30" rx="3" fill="#4A5568"/>
+                            <rect x="235" y="125" width="70" height="8" rx="4" fill="#E2E8F0"/>
+                            <!-- Bunk Bed Ladder -->
+                            <rect x="300" y="100" width="3" height="60" fill="#8B4513"/>
+                            <rect x="295" y="110" width="13" height="2" fill="#8B4513"/>
+                            <rect x="295" y="125" width="13" height="2" fill="#8B4513"/>
+                            <rect x="295" y="140" width="13" height="2" fill="#8B4513"/>
+                            <!-- Kitchenette -->
+                            <rect x="320" y="120" width="60" height="40" rx="3" fill="#4A5568"/>
+                            <rect x="325" y="115" width="50" height="5" rx="2" fill="#2D3748"/>
+                            <!-- Kitchen Appliances -->
+                            <rect x="330" y="105" width="15" height="15" rx="2" fill="#E2E8F0"/>
+                            <rect x="350" y="105" width="15" height="15" rx="2" fill="#E2E8F0"/>
+                            <!-- Dining Table -->
+                            <rect x="120" y="140" width="80" height="30" rx="4" fill="#8B4513"/>
+                            <rect x="115" y="135" width="90" height="5" rx="2" fill="#A0522D"/>
+                            <!-- Dining Chairs -->
+                            <rect x="110" y="125" width="15" height="20" rx="2" fill="#8B4513"/>
+                            <rect x="125" y="125" width="15" height="20" rx="2" fill="#8B4513"/>
+                            <rect x="160" y="125" width="15" height="20" rx="2" fill="#8B4513"/>
+                            <rect x="185" y="125" width="15" height="20" rx="2" fill="#8B4513"/>
+                            <rect x="205" y="125" width="15" height="20" rx="2" fill="#8B4513"/>
+                            <!-- Large Window -->
+                            <rect x="20" y="20" width="120" height="80" rx="5" fill="#87CEEB"/>
+                            <rect x="25" y="25" width="110" height="70" rx="3" fill="#E0F6FF"/>
+                            <line x1="80" y1="25" x2="80" y2="95" stroke="#B0C4DE" stroke-width="2"/>
+                            <line x1="25" y1="60" x2="135" y2="60" stroke="#B0C4DE" stroke-width="2"/>
+                            <!-- Mountain View -->
+                            <polygon points="30,50 50,30 70,40 90,25 110,35 130,20 135,55 30,55" fill="#4A5568"/>
+                            <!-- TV Area -->
+                            <rect x="160" y="40" width="50" height="30" rx="3" fill="#2D3748"/>
+                            <rect x="165" y="45" width="40" height="20" rx="2" fill="#1A202C"/>
+                            <!-- Family Photos -->
+                            <rect x="250" y="30" width="20" height="15" rx="2" fill="#F7FAFC"/>
+                            <rect x="280" y="30" width="20" height="15" rx="2" fill="#F7FAFC"/>
+                            <rect x="310" y="30" width="20" height="15" rx="2" fill="#F7FAFC"/>
+                            <!-- Curtains -->
+                            <rect x="15" y="15" width="10" height="85" fill="#228B22"/>
+                            <rect x="135" y="15" width="10" height="85" fill="#228B22"/>
+                            <defs>
+                                <linearGradient id="familyRoomGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#F0FFF4"/>
+                                    <stop offset="100%" style="stop-color:#E6FFED"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                            <div class="text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-search-plus text-2xl mb-2"></i>
+                                <p class="text-sm">View Gallery</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Family Suite</h3>
+                        <p class="text-gray-600 mb-4">Perfect for families with separate living area and multiple beds.</p>
+                        <ul class="text-sm text-gray-600 mb-4 space-y-1">
+                            <li><i class="fas fa-wifi text-blue-600 mr-2 icon-bounce"></i>Free WiFi</li>
+                            <li><i class="fas fa-snowflake text-blue-600 mr-2 icon-bounce"></i>Air Conditioning</li>
+                            <li><i class="fas fa-tv text-blue-600 mr-2 icon-bounce"></i>2 Smart TVs</li>
+                            <li><i class="fas fa-utensils text-blue-600 mr-2 icon-bounce"></i>Kitchenette</li>
+                            <li><i class="fas fa-users text-blue-600 mr-2 icon-bounce"></i>Sleeps 4-6</li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <div class="text-2xl font-bold gradient-text">₹6,500<span class="text-sm text-gray-500">/night</span></div>
+                            <button onclick="bookRoom('Family Suite')" class="btn-primary text-white px-4 py-2 rounded-lg">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Facilities & Amenities</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Enjoy our comprehensive range of facilities designed to make your stay comfortable and memorable.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-blue-50 rounded-lg card-hover fade-in stagger-1">
+                    <i class="fas fa-utensils text-4xl text-blue-600 mb-4 icon-bounce float"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Restaurant</h3>
+                    <p class="text-gray-600">Multi-cuisine restaurant serving local and international dishes</p>
+                </div>
+                <div class="text-center p-6 bg-blue-50 rounded-lg card-hover fade-in stagger-2">
+                    <i class="fas fa-wifi text-4xl text-blue-600 mb-4 icon-bounce float"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Free WiFi</h3>
+                    <p class="text-gray-600">High-speed internet access throughout the property</p>
+                </div>
+                <div class="text-center p-6 bg-blue-50 rounded-lg card-hover fade-in stagger-3">
+                    <i class="fas fa-car text-4xl text-blue-600 mb-4 icon-bounce float"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Free Parking</h3>
+                    <p class="text-gray-600">Secure parking space for all guests</p>
+                </div>
+                <div class="text-center p-6 bg-blue-50 rounded-lg card-hover fade-in stagger-4">
+                    <i class="fas fa-tint text-4xl text-blue-600 mb-4 icon-bounce float"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Hot Water</h3>
+                    <p class="text-gray-600">24/7 hot water supply in all rooms</p>
+                </div>
+                <div class="text-center p-6 bg-blue-50 rounded-lg card-hover fade-in stagger-5">
+                    <i class="fas fa-mountain text-4xl text-blue-600 mb-4 icon-bounce float"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Mountain Views</h3>
+                    <p class="text-gray-600">Breathtaking views of the Annapurna range</p>
+                </div>
+                <div class="text-center p-6 bg-blue-50 rounded-lg card-hover fade-in stagger-6">
+                    <i class="fas fa-concierge-bell text-4xl text-blue-600 mb-4 icon-bounce float"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Room Service</h3>
+                    <p class="text-gray-600">24/7 room service for your convenience</p>
+                </div>
+                <div class="text-center p-6 bg-blue-50 rounded-lg card-hover fade-in stagger-1">
+                    <i class="fas fa-map-marked-alt text-4xl text-blue-600 mb-4 icon-bounce float"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Travel Desk</h3>
+                    <p class="text-gray-600">Local tour arrangements and travel assistance</p>
+                </div>
+                <div class="text-center p-6 bg-blue-50 rounded-lg card-hover fade-in stagger-2">
+                    <i class="fas fa-hiking text-4xl text-blue-600 mb-4 icon-bounce float"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Tour Packages</h3>
+                    <p class="text-gray-600">Customized trekking and sightseeing packages</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Gallery</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Take a visual journey through our beautiful property and stunning surroundings.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Luxury Rooms -->
+                <div class="relative h-64 rounded-lg shadow-lg overflow-hidden cursor-pointer card-hover" onclick="openGallery('luxury-rooms')">
+                    <svg class="w-full h-full object-cover" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="400" height="300" fill="url(#luxuryGradient)"/>
+                        <!-- Luxury Suite Interior -->
+                        <rect x="0" y="250" width="400" height="50" fill="#654321"/>
+                        <!-- King Bed -->
+                        <rect x="50" y="150" width="180" height="80" rx="10" fill="#2D3748"/>
+                        <rect x="45" y="145" width="190" height="25" rx="12" fill="#F7FAFC"/>
+                        <!-- Luxury Pillows -->
+                        <ellipse cx="90" cy="152" rx="20" ry="12" fill="#CBD5E0"/>
+                        <ellipse cx="140" cy="152" rx="20" ry="12" fill="#CBD5E0"/>
+                        <ellipse cx="190" cy="152" rx="20" ry="12" fill="#CBD5E0"/>
+                        <!-- Chandelier -->
+                        <ellipse cx="200" cy="50" rx="30" ry="15" fill="#FFD700"/>
+                        <rect x="195" y="35" width="10" height="20" fill="#8B4513"/>
+                        <!-- Luxury Furniture -->
+                        <rect x="260" y="180" width="50" height="60" rx="5" fill="#8B4513"/>
+                        <rect x="255" y="175" width="60" height="10" rx="5" fill="#A0522D"/>
+                        <!-- Floor-to-ceiling Windows -->
+                        <rect x="320" y="50" width="70" height="180" rx="5" fill="#87CEEB"/>
+                        <rect x="325" y="55" width="60" height="170" rx="3" fill="#E0F6FF"/>
+                        <!-- Mountain View -->
+                        <polygon points="330,120 350,80 370,100 385,70 385,140 330,140" fill="#4A5568"/>
+                        <defs>
+                            <linearGradient id="luxuryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#1E3A8A"/>
+                                <stop offset="100%" style="stop-color:#3B82F6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div class="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-center">
+                            <i class="fas fa-bed text-4xl mb-2"></i>
+                            <p class="text-lg font-semibold">Luxury Rooms</p>
+                            <p class="text-sm">Click to explore</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel Exterior -->
+                <div class="relative h-64 rounded-lg shadow-lg overflow-hidden cursor-pointer card-hover" onclick="openGallery('hotel-exterior')">
+                    <svg class="w-full h-full object-cover" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="400" height="300" fill="url(#exteriorGradient)"/>
+                        <!-- Sky and Mountains -->
+                        <polygon points="0,150 80,80 160,120 240,60 320,100 400,40 400,150 0,150" fill="#4A5568"/>
+                        <polygon points="0,160 100,100 200,130 300,80 400,110 400,160 0,160" fill="#2C5282"/>
+                        <!-- Hotel Building -->
+                        <rect x="100" y="160" width="200" height="120" rx="8" fill="#8B4513"/>
+                        <rect x="95" y="155" width="210" height="10" rx="5" fill="#A0522D"/>
+                        <!-- Roof -->
+                        <polygon points="90,155 200,120 310,155 300,160 100,160" fill="#DC143C"/>
+                        <!-- Windows -->
+                        <rect x="120" y="180" width="25" height="30" rx="3" fill="#87CEEB"/>
+                        <rect x="155" y="180" width="25" height="30" rx="3" fill="#87CEEB"/>
+                        <rect x="190" y="180" width="25" height="30" rx="3" fill="#87CEEB"/>
+                        <rect x="225" y="180" width="25" height="30" rx="3" fill="#87CEEB"/>
+                        <rect x="260" y="180" width="25" height="30" rx="3" fill="#87CEEB"/>
+                        <!-- Balconies -->
+                        <rect x="115" y="210" width="35" height="5" fill="#8B4513"/>
+                        <rect x="185" y="210" width="35" height="5" fill="#8B4513"/>
+                        <rect x="255" y="210" width="35" height="5" fill="#8B4513"/>
+                        <!-- Main Entrance -->
+                        <rect x="180" y="220" width="40" height="60" rx="5" fill="#654321"/>
+                        <rect x="185" y="225" width="30" height="50" rx="3" fill="#8B4513"/>
+                        <!-- Hotel Sign -->
+                        <rect x="150" y="140" width="100" height="20" rx="3" fill="#F7FAFC"/>
+                        <!-- Garden -->
+                        <ellipse cx="80" cy="270" rx="30" ry="15" fill="#228B22"/>
+                        <ellipse cx="320" cy="270" rx="30" ry="15" fill="#228B22"/>
+                        <defs>
+                            <linearGradient id="exteriorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#10B981"/>
+                                <stop offset="100%" style="stop-color:#059669"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div class="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-center">
+                            <i class="fas fa-building text-4xl mb-2"></i>
+                            <p class="text-lg font-semibold">Hotel Exterior</p>
+                            <p class="text-sm">Click to explore</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurant -->
+                <div class="relative h-64 rounded-lg shadow-lg overflow-hidden cursor-pointer card-hover" onclick="openGallery('restaurant')">
+                    <svg class="w-full h-full object-cover" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="400" height="300" fill="url(#restaurantGradient)"/>
+                        <!-- Floor -->
+                        <rect x="0" y="250" width="400" height="50" fill="#8B4513"/>
+                        <!-- Dining Tables -->
+                        <ellipse cx="100" cy="200" rx="40" ry="25" fill="#A0522D"/>
+                        <ellipse cx="250" cy="180" rx="40" ry="25" fill="#A0522D"/>
+                        <ellipse cx="320" cy="220" rx="35" ry="20" fill="#A0522D"/>
+                        <!-- Chairs -->
+                        <rect x="70" y="190" width="15" height="25" rx="3" fill="#654321"/>
+                        <rect x="115" y="190" width="15" height="25" rx="3" fill="#654321"/>
+                        <rect x="85" y="175" width="15" height="25" rx="3" fill="#654321"/>
+                        <rect x="100" y="220" width="15" height="25" rx="3" fill="#654321"/>
+                        <!-- Kitchen Area -->
+                        <rect x="20" y="120" width="80" height="60" rx="5" fill="#4A5568"/>
+                        <rect x="25" y="115" width="70" height="10" rx="3" fill="#2D3748"/>
+                        <!-- Kitchen Equipment -->
+                        <rect x="30" y="100" width="20" height="20" rx="2" fill="#E2E8F0"/>
+                        <rect x="55" y="100" width="20" height="20" rx="2" fill="#E2E8F0"/>
+                        <rect x="80" y="100" width="15" height="20" rx="2" fill="#E2E8F0"/>
+                        <!-- Chandelier -->
+                        <ellipse cx="200" cy="80" rx="35" ry="20" fill="#FFD700"/>
+                        <rect x="195" y="60" width="10" height="25" fill="#8B4513"/>
+                        <!-- Windows with Mountain View -->
+                        <rect x="300" y="50" width="90" height="100" rx="5" fill="#87CEEB"/>
+                        <rect x="305" y="55" width="80" height="90" rx="3" fill="#E0F6FF"/>
+                        <polygon points="310,100 330,70 350,85 370,60 385,75 385,110 310,110" fill="#4A5568"/>
+                        <!-- Bar Counter -->
+                        <rect x="120" y="120" width="120" height="40" rx="5" fill="#8B4513"/>
+                        <rect x="115" y="115" width="130" height="8" rx="4" fill="#A0522D"/>
+                        <!-- Bar Stools -->
+                        <rect x="130" y="160" width="12" height="30" rx="2" fill="#654321"/>
+                        <rect x="160" y="160" width="12" height="30" rx="2" fill="#654321"/>
+                        <rect x="190" y="160" width="12" height="30" rx="2" fill="#654321"/>
+                        <rect x="220" y="160" width="12" height="30" rx="2" fill="#654321"/>
+                        <defs>
+                            <linearGradient id="restaurantGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7C3AED"/>
+                                <stop offset="100%" style="stop-color:#A855F7"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div class="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-center">
+                            <i class="fas fa-utensils text-4xl mb-2"></i>
+                            <p class="text-lg font-semibold">Restaurant</p>
+                            <p class="text-sm">Click to explore</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mountain Views -->
+                <div class="relative h-64 rounded-lg shadow-lg overflow-hidden cursor-pointer card-hover" onclick="openGallery('mountain-views')">
+                    <svg class="w-full h-full object-cover" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="400" height="300" fill="url(#mountainGradient)"/>
+                        <!-- Sky -->
+                        <rect x="0" y="0" width="400" height="150" fill="#87CEEB"/>
+                        <!-- Mountain Ranges -->
+                        <polygon points="0,150 60,50 120,80 180,30 240,70 300,20 360,60 400,40 400,150" fill="#4A5568"/>
+                        <polygon points="0,160 80,80 140,110 200,60 260,100 320,50 380,90 400,70 400,160" fill="#2C5282"/>
+                        <polygon points="0,170 100,120 160,140 220,100 280,130 340,90 400,120 400,170" fill="#1A365D"/>
+                        <!-- Snow Caps -->
+                        <polygon points="50,60 60,50 70,60 65,65 55,65" fill="#F7FAFC"/>
+                        <polygon points="170,40 180,30 190,40 185,45 175,45" fill="#F7FAFC"/>
+                        <polygon points="290,30 300,20 310,30 305,35 295,35" fill="#F7FAFC"/>
+                        <!-- Clouds -->
+                        <ellipse cx="100" cy="80" rx="25" ry="15" fill="#F7FAFC" opacity="0.8"/>
+                        <ellipse cx="250" cy="60" rx="30" ry="18" fill="#F7FAFC" opacity="0.8"/>
+                        <ellipse cx="350" cy="90" rx="20" ry="12" fill="#F7FAFC" opacity="0.8"/>
+                        <!-- Foreground Hills -->
+                        <ellipse cx="150" cy="250" rx="100" ry="50" fill="#228B22"/>
+                        <ellipse cx="300" cy="260" rx="80" ry="40" fill="#32CD32"/>
+                        <!-- Trees -->
+                        <polygon points="80,220 85,200 90,220" fill="#228B22"/>
+                        <rect x="83" y="220" width="4" height="15" fill="#8B4513"/>
+                        <polygon points="320,230 325,210 330,230" fill="#228B22"/>
+                        <rect x="323" y="230" width="4" height="15" fill="#8B4513"/>
+                        <!-- Sun -->
+                        <circle cx="350" cy="70" r="20" fill="#FFD700" opacity="0.9"/>
+                        <defs>
+                            <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#F97316"/>
+                                <stop offset="100%" style="stop-color:#EA580C"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div class="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-center">
+                            <i class="fas fa-mountain text-4xl mb-2"></i>
+                            <p class="text-lg font-semibold">Mountain Views</p>
+                            <p class="text-sm">Click to explore</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reception Area -->
+                <div class="relative h-64 rounded-lg shadow-lg overflow-hidden cursor-pointer card-hover" onclick="openGallery('reception')">
+                    <svg class="w-full h-full object-cover" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="400" height="300" fill="url(#receptionGradient)"/>
+                        <!-- Floor -->
+                        <rect x="0" y="250" width="400" height="50" fill="#8B4513"/>
+                        <!-- Reception Desk -->
+                        <rect x="150" y="180" width="100" height="50" rx="5" fill="#8B4513"/>
+                        <rect x="145" y="175" width="110" height="10" rx="5" fill="#A0522D"/>
+                        <!-- Computer -->
+                        <rect x="170" y="165" width="25" height="15" rx="2" fill="#2D3748"/>
+                        <rect x="175" y="170" width="15" height="10" rx="1" fill="#1A202C"/>
+                        <!-- Reception Chair -->
+                        <rect x="200" y="200" width="20" height="30" rx="3" fill="#654321"/>
+                        <rect x="195" y="195" width="30" height="8" rx="4" fill="#A0522D"/>
+                        <rect x="205" y="185" width="10" height="15" rx="2" fill="#A0522D"/>
+                        <!-- Lobby Seating -->
+                        <rect x="50" y="200" width="80" height="40" rx="5" fill="#4A5568"/>
+                        <rect x="45" y="195" width="90" height="10" rx="5" fill="#2D3748"/>
+                        <!-- Sofa Cushions -->
+                        <rect x="55" y="190" width="15" height="15" rx="3" fill="#CBD5E0"/>
+                        <rect x="75" y="190" width="15" height="15" rx="3" fill="#CBD5E0"/>
+                        <rect x="95" y="190" width="15" height="15" rx="3" fill="#CBD5E0"/>
+                        <rect x="115" y="190" width="15" height="15" rx="3" fill="#CBD5E0"/>
+                        <!-- Coffee Table -->
+                        <rect x="70" y="220" width="50" height="25" rx="3" fill="#8B4513"/>
+                        <rect x="65" y="215" width="60" height="5" rx="2" fill="#A0522D"/>
+                        <!-- Chandelier -->
+                        <ellipse cx="200" cy="80" rx="40" ry="25" fill="#FFD700"/>
+                        <rect x="195" y="55" width="10" height="30" fill="#8B4513"/>
+                        <!-- Wall Art -->
+                        <rect x="300" y="120" width="60" height="40" rx="3" fill="#F7FAFC"/>
+                        <rect x="305" y="125" width="50" height="30" rx="2" fill="#E2E8F0"/>
+                        <!-- Plants -->
+                        <ellipse cx="80" cy="260" rx="15" ry="10" fill="#228B22"/>
+                        <rect x="77" y="260" width="6" height="20" fill="#8B4513"/>
+                        <ellipse cx="320" cy="260" rx="15" ry="10" fill="#228B22"/>
+                        <rect x="317" y="260" width="6" height="20" fill="#8B4513"/>
+                        <!-- Windows -->
+                        <rect x="20" y="50" width="60" height="80" rx="5" fill="#87CEEB"/>
+                        <rect x="25" y="55" width="50" height="70" rx="3" fill="#E0F6FF"/>
+                        <line x1="50" y1="55" x2="50" y2="125" stroke="#B0C4DE" stroke-width="2"/>
+                        <line x1="25" y1="90" x2="75" y2="90" stroke="#B0C4DE" stroke-width="2"/>
+                        <defs>
+                            <linearGradient id="receptionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#0891B2"/>
+                                <stop offset="100%" style="stop-color:#0E7490"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div class="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-center">
+                            <i class="fas fa-door-open text-4xl mb-2"></i>
+                            <p class="text-lg font-semibold">Reception Area</p>
+                            <p class="text-sm">Click to explore</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Surroundings -->
+                <div class="relative h-64 rounded-lg shadow-lg overflow-hidden cursor-pointer card-hover" onclick="openGallery('surroundings')">
+                    <svg class="w-full h-full object-cover" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="400" height="300" fill="url(#surroundingsGradient)"/>
+                        <!-- Sky -->
+                        <rect x="0" y="0" width="400" height="120" fill="#87CEEB"/>
+                        <!-- Mountains -->
+                        <polygon points="0,120 80,40 160,80 240,20 320,60 400,30 400,120" fill="#4A5568"/>
+                        <!-- Forest -->
+                        <rect x="0" y="120" width="400" height="80" fill="#228B22"/>
+                        <!-- Trees -->
+                        <polygon points="50,150 55,120 60,150" fill="#006400"/>
+                        <rect x="53" y="150" width="4" height="20" fill="#8B4513"/>
+                        <polygon points="120,140 125,110 130,140" fill="#006400"/>
+                        <rect x="123" y="140" width="4" height="20" fill="#8B4513"/>
+                        <polygon points="200,160 205,130 210,160" fill="#006400"/>
+                        <rect x="203" y="160" width="4" height="20" fill="#8B4513"/>
+                        <polygon points="280,145 285,115 290,145" fill="#006400"/>
+                        <rect x="283" y="145" width="4" height="20" fill="#8B4513"/>
+                        <polygon points="350,155 355,125 360,155" fill="#006400"/>
+                        <rect x="353" y="155" width="4" height="20" fill="#8B4513"/>
+                        <!-- River -->
+                        <path d="M 0 220 Q 100 200 200 220 T 400 210" stroke="#4682B4" stroke-width="15" fill="none"/>
+                        <path d="M 0 225 Q 100 205 200 225 T 400 215" stroke="#87CEEB" stroke-width="8" fill="none"/>
+                        <!-- Rocks -->
+                        <ellipse cx="80" cy="240" rx="20" ry="15" fill="#696969"/>
+                        <ellipse cx="180" cy="235" rx="25" ry="18" fill="#696969"/>
+                        <ellipse cx="320" cy="245" rx="18" ry="12" fill="#696969"/>
+                        <!-- Grass -->
+                        <rect x="0" y="200" width="400" height="50" fill="#32CD32"/>
+                        <!-- Flowers -->
+                        <circle cx="60" cy="210" r="3" fill="#FF69B4"/>
+                        <circle cx="150" cy="215" r="3" fill="#FFD700"/>
+                        <circle cx="250" cy="205" r="3" fill="#FF4500"/>
+                        <circle cx="340" cy="220" r="3" fill="#9370DB"/>
+                        <!-- Hiking Trail -->
+                        <path d="M 0 250 Q 150 240 300 250 Q 350 255 400 250" stroke="#8B4513" stroke-width="8" fill="none"/>
+                        <!-- Clouds -->
+                        <ellipse cx="100" cy="60" rx="30" ry="18" fill="#F7FAFC" opacity="0.8"/>
+                        <ellipse cx="300" cy="80" rx="25" ry="15" fill="#F7FAFC" opacity="0.8"/>
+                        <defs>
+                            <linearGradient id="surroundingsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#DC2626"/>
+                                <stop offset="100%" style="stop-color:#B91C1C"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div class="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-center">
+                            <i class="fas fa-tree text-4xl mb-2"></i>
+                            <p class="text-lg font-semibold">Surroundings</p>
+                            <p class="text-sm">Click to explore</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nearby Attractions Section -->
+    <section id="attractions" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Nearby Attractions</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore the magnificent attractions and activities around Hotel Manang Mant.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-6">
+                    <i class="fas fa-hiking text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Annapurna Circuit Trek</h3>
+                    <p class="text-gray-600 mb-3">World-famous trekking route starting right from our doorstep.</p>
+                    <p class="text-sm text-blue-600 font-semibold">Distance: 0 km (Starting point)</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-6">
+                    <i class="fas fa-water text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Tilicho Lake</h3>
+                    <p class="text-gray-600 mb-3">One of the highest lakes in the world with crystal clear waters.</p>
+                    <p class="text-sm text-blue-600 font-semibold">Distance: 25 km (1 day trek)</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-6">
+                    <i class="fas fa-place-of-worship text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Braga Monastery</h3>
+                    <p class="text-gray-600 mb-3">Ancient Buddhist monastery with stunning architecture.</p>
+                    <p class="text-sm text-blue-600 font-semibold">Distance: 5 km (2 hours walk)</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-6">
+                    <i class="fas fa-mountain text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Gangapurna Lake</h3>
+                    <p class="text-gray-600 mb-3">Glacial lake with spectacular mountain reflections.</p>
+                    <p class="text-sm text-blue-600 font-semibold">Distance: 3 km (1 hour walk)</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-6">
+                    <i class="fas fa-store text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Local Market</h3>
+                    <p class="text-gray-600 mb-3">Traditional market selling local handicrafts and souvenirs.</p>
+                    <p class="text-sm text-blue-600 font-semibold">Distance: 1 km (15 minutes walk)</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-6">
+                    <i class="fas fa-hot-tub text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Natural Hot Springs</h3>
+                    <p class="text-gray-600 mb-3">Relax in natural hot springs with therapeutic properties.</p>
+                    <p class="text-sm text-blue-600 font-semibold">Distance: 8 km (3 hours trek)</p>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <div class="bg-blue-50 rounded-lg p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">📍 Find Us on Map</h3>
+                    <p class="text-gray-600 mb-4">Hotel Manang Mant, Manang Village, Annapurna Conservation Area, Nepal</p>
+                    <button onclick="openMap()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">View on Google Maps</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Guest Reviews</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Read what our guests have to say about their experience at Hotel Manang Mant.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">★★★★★</div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Amazing location with breathtaking mountain views. The staff was incredibly helpful and the rooms were clean and comfortable. Perfect base for trekking!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">S</div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Sarah Johnson</p>
+                            <p class="text-sm text-gray-500">USA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">★★★★★</div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Excellent hospitality and authentic local experience. The food was delicious and the travel desk helped us plan amazing day trips. Highly recommended!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-3">R</div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Raj Patel</p>
+                            <p class="text-sm text-gray-500">India</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">★★★★★</div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Beautiful property in a stunning location. The family suite was perfect for our group. Great value for money and unforgettable mountain views!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-3">M</div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Maria Schmidt</p>
+                            <p class="text-sm text-gray-500">Germany</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Contact Us</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Get in touch with us for reservations, inquiries, or any assistance you need.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Get in Touch</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-600 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Address</h4>
+                                <p class="text-gray-600">Manang Village, Annapurna Conservation Area<br>Manang District, Nepal</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-phone text-blue-600 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Phone</h4>
+                                <p class="text-gray-600">+977 98765 43210</p>
+                                <p class="text-gray-600">+977 98765 43211</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-blue-600 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Email</h4>
+                                <p class="text-gray-600">info@hotelmanangmant.com</p>
+                                <p class="text-gray-600">reservations@hotelmanangmant.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fab fa-whatsapp text-blue-600 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">WhatsApp</h4>
+                                <a href="https://wa.me/9779876543210" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">+977 98765 43210</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="font-semibold text-gray-800 mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-700 text-2xl"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-blue-600 hover:text-blue-700 text-2xl"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-blue-600 hover:text-blue-700 text-2xl"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-blue-600 hover:text-blue-700 text-2xl"><i class="fab fa-tripadvisor"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form onsubmit="submitContact(event)" class="bg-gray-50 p-8 rounded-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Send us a Message</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <input type="text" placeholder="Your Name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                            <input type="email" placeholder="Your Email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                        </div>
+                        <input type="text" placeholder="Subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent mb-4">
+                        <textarea placeholder="Your Message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent mb-6"></textarea>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition duration-300">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">🏨 Hotel Manang Mant</h3>
+                    <p class="text-gray-300 mb-4">Your gateway to the Himalayas. Experience luxury, comfort, and authentic hospitality in the heart of Manang.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white">About Us</a></li>
+                        <li><a href="#rooms" class="text-gray-300 hover:text-white">Rooms</a></li>
+                        <li><a href="#facilities" class="text-gray-300 hover:text-white">Facilities</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Room Service</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Travel Desk</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Tour Packages</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Restaurant</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Manang, Nepal</li>
+                        <li><i class="fas fa-phone mr-2"></i>+977 98765 43210</li>
+                        <li><i class="fas fa-envelope mr-2"></i>info@hotelmanangmant.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">&copy; 2024 Hotel Manang Mant. All rights reserved. | Designed with ❤️ for mountain lovers</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="fixed inset-0 bg-black bg-opacity-90 hidden z-50 flex items-center justify-center">
+        <div class="max-w-6xl w-full mx-4 relative">
+            <button onclick="closeGallery()" class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 z-10">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="bg-white rounded-lg overflow-hidden">
+                <div class="p-6 border-b">
+                    <h2 id="galleryTitle" class="text-2xl font-bold text-gray-800">Gallery</h2>
+                    <p id="galleryDescription" class="text-gray-600 mt-2">Explore our beautiful spaces</p>
+                </div>
+                
+                <div class="p-6">
+                    <div id="galleryContent" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Gallery images will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Room Gallery Modal -->
+    <div id="roomGalleryModal" class="fixed inset-0 bg-black bg-opacity-90 hidden z-50 flex items-center justify-center">
+        <div class="max-w-6xl w-full mx-4 relative">
+            <button onclick="closeRoomGallery()" class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 z-10">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="bg-white rounded-lg overflow-hidden">
+                <div class="p-6 border-b">
+                    <h2 id="roomGalleryTitle" class="text-2xl font-bold text-gray-800">Room Gallery</h2>
+                    <p id="roomGalleryDescription" class="text-gray-600 mt-2">Detailed view of our rooms</p>
+                </div>
+                
+                <div class="p-6">
+                    <div id="roomGalleryContent" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Room gallery images will be populated here -->
+                    </div>
+                    
+                    <div class="mt-8 text-center">
+                        <button id="bookThisRoom" onclick="bookFromGallery()" class="btn-primary text-white px-8 py-3 rounded-lg text-lg font-semibold pulse-glow">
+                            <i class="fas fa-calendar-check mr-2"></i>Book This Room
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">🔐 Admin Login</h2>
+                <button onclick="closeAdminLogin()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <form onsubmit="handleAdminLogin(event)">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                    <input type="text" id="adminUsername" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                    <input type="password" id="adminPassword" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent">
+                </div>
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold">Access Admin Panel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-6xl w-full mx-4 max-h-screen overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">🔧 Admin Panel - Database View</h2>
+                <button onclick="closeAdminPanel()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Admin Navigation -->
+            <div class="flex space-x-4 mb-6 border-b">
+                <button onclick="showBookingsData()" class="admin-tab-btn bg-blue-600 text-white px-4 py-2 rounded-t-lg">Bookings Data</button>
+                <button onclick="showContactsData()" class="admin-tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-t-lg">Contact Messages</button>
+                <button onclick="showUsersData()" class="admin-tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-t-lg">Registered Users</button>
+                <button onclick="exportData()" class="bg-green-600 text-white px-4 py-2 rounded-lg ml-auto">📥 Export All Data</button>
+            </div>
+
+            <!-- Bookings Table -->
+            <div id="bookingsTable" class="admin-content">
+                <h3 class="text-xl font-bold mb-4">📋 Bookings Database (MySQL Table: bookings)</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="border border-gray-300 px-4 py-2 text-left">ID</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Guest Name</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Email</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Phone</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Room Type</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Check-in</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Check-out</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Guests</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Payment</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Status</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Booking Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingsTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Contacts Table -->
+            <div id="contactsTable" class="admin-content hidden">
+                <h3 class="text-xl font-bold mb-4">📧 Contact Messages (MySQL Table: contact_messages)</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="border border-gray-300 px-4 py-2 text-left">ID</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Name</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Email</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Subject</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Message</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Date</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contactsTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Users Table -->
+            <div id="usersTable" class="admin-content hidden">
+                <h3 class="text-xl font-bold mb-4">👥 Registered Users (MySQL Table: users)</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="border border-gray-300 px-4 py-2 text-left">ID</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Full Name</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Email</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Phone</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Registration Date</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Last Login</th>
+                                <th class="border border-gray-300 px-4 py-2 text-left">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Database Stats -->
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-blue-50 p-4 rounded-lg text-center">
+                    <div class="text-2xl font-bold text-blue-600" id="totalBookings">0</div>
+                    <div class="text-gray-600">Total Bookings</div>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg text-center">
+                    <div class="text-2xl font-bold text-green-600" id="totalContacts">0</div>
+                    <div class="text-gray-600">Contact Messages</div>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg text-center">
+                    <div class="text-2xl font-bold text-purple-600" id="totalUsers">0</div>
+                    <div class="text-gray-600">Registered Users</div>
+                </div>
+            </div>
+
+            <!-- SQL Query Examples -->
+            <div class="mt-8 bg-gray-50 p-6 rounded-lg">
+                <h4 class="text-lg font-bold mb-4">📝 MySQL Query Examples</h4>
+                <div class="space-y-3 text-sm">
+                    <div class="bg-white p-3 rounded border">
+                        <strong>View All Bookings:</strong><br>
+                        <code class="text-blue-600">SELECT * FROM bookings ORDER BY booking_date DESC;</code>
+                    </div>
+                    <div class="bg-white p-3 rounded border">
+                        <strong>Today's Check-ins:</strong><br>
+                        <code class="text-blue-600">SELECT * FROM bookings WHERE check_in_date = CURDATE();</code>
+                    </div>
+                    <div class="bg-white p-3 rounded border">
+                        <strong>Revenue by Room Type:</strong><br>
+                        <code class="text-blue-600">SELECT room_type, COUNT(*) as bookings, SUM(total_amount) as revenue FROM bookings GROUP BY room_type;</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Login</h2>
+                <button onclick="closeLogin()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <form onsubmit="handleLogin(event)">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                    <input type="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                    <input type="password" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold">Login</button>
+            </form>
+            <div class="mt-4 text-center">
+                <p class="text-gray-600">Don't have an account? <button onclick="showRegister()" class="text-blue-600 hover:underline">Register here</button></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Register</h2>
+                <button onclick="closeRegister()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <form onsubmit="handleRegister(event)">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
+                    <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                    <input type="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Phone</label>
+                    <input type="tel" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                    <input type="password" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold">Register</button>
+            </form>
+            <div class="mt-4 text-center">
+                <p class="text-gray-600">Already have an account? <button onclick="showLogin()" class="text-blue-600 hover:underline">Login here</button></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-lg w-full mx-4 max-h-screen overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Book Your Stay</h2>
+                <button onclick="closeBooking()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <form onsubmit="handleBooking(event)">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Check-in Date</label>
+                        <input type="date" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Check-out Date</label>
+                        <input type="date" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Number of Guests</label>
+                        <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                            <option value="">Select guests</option>
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5+ Guests</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Room Type</label>
+                        <select id="roomType" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                            <option value="">Select room type</option>
+                            <option value="Standard Room">Standard Room - ₹2,500/night</option>
+                            <option value="Deluxe Room">Deluxe Room - ₹4,000/night</option>
+                            <option value="Family Suite">Family Suite - ₹6,500/night</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
+                    <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                        <input type="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Phone</label>
+                        <input type="tel" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Special Requests (Optional)</label>
+                    <textarea rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Any special requirements or requests..."></textarea>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Payment Method</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="payment" value="hotel" class="mr-2" checked>
+                            <span>Pay at Hotel</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="payment" value="advance" class="mr-2">
+                            <span>Advance Payment (50%)</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Navigation functionality
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+
+        // Modal functions
+        function showLogin() {
+            document.getElementById('loginModal').classList.remove('hidden');
+            document.getElementById('registerModal').classList.add('hidden');
+        }
+
+        function closeLogin() {
+            document.getElementById('loginModal').classList.add('hidden');
+        }
+
+        function showRegister() {
+            document.getElementById('registerModal').classList.remove('hidden');
+            document.getElementById('loginModal').classList.add('hidden');
+        }
+
+        function closeRegister() {
+            document.getElementById('registerModal').classList.add('hidden');
+        }
+
+        function showBooking() {
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBooking() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function bookRoom(roomType) {
+            showBooking();
+            document.getElementById('roomType').value = roomType;
+        }
+
+        // Form handlers
+        function handleLogin(event) {
+            event.preventDefault();
+            // Simulate login process
+            alert('Login successful! Welcome to Hotel Manang Mant.');
+            closeLogin();
+            
+            // Store login state in localStorage (simple demo)
+            localStorage.setItem('isLoggedIn', 'true');
+            updateLoginButton();
+            checkLoginStatus(); // Refresh content visibility
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            
+            // Get registration data
+            const userData = {
+                id: Date.now(),
+                fullName: event.target.querySelector('input[type="text"]').value,
+                email: event.target.querySelector('input[type="email"]').value,
+                phone: event.target.querySelector('input[type="tel"]').value,
+                registrationDate: new Date().toISOString(),
+                lastLogin: new Date().toISOString(),
+                status: 'active'
+            };
+            
+            // Store user data in localStorage (simulating MySQL database)
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            users.push(userData);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            alert('Registration successful! Welcome to Hotel Manang Mant.');
+            closeRegister();
+            
+            // Store login state in localStorage (simple demo)
+            localStorage.setItem('isLoggedIn', 'true');
+            updateLoginButton();
+            checkLoginStatus(); // Refresh content visibility
+        }
+
+        function handleBooking(event) {
+            event.preventDefault();
+            // Simulate booking process
+            const formData = new FormData(event.target);
+            const bookingData = {
+                checkIn: event.target.querySelector('input[type="date"]').value,
+                checkOut: event.target.querySelectorAll('input[type="date"]')[1].value,
+                guests: event.target.querySelector('select').value,
+                roomType: event.target.querySelector('#roomType').value,
+                name: event.target.querySelector('input[type="text"]').value,
+                email: event.target.querySelector('input[type="email"]').value,
+                phone: event.target.querySelector('input[type="tel"]').value,
+                requests: event.target.querySelector('textarea').value,
+                payment: event.target.querySelector('input[name="payment"]:checked').value
+            };
+            
+            // Store booking in localStorage (simple demo)
+            const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+            bookings.push({
+                ...bookingData,
+                id: Date.now(),
+                status: 'confirmed',
+                date: new Date().toISOString()
+            });
+            localStorage.setItem('bookings', JSON.stringify(bookings));
+            
+            alert(`Booking confirmed! 
+            
+Booking Details:
+- Room: ${bookingData.roomType}
+- Check-in: ${bookingData.checkIn}
+- Check-out: ${bookingData.checkOut}
+- Guests: ${bookingData.guests}
+- Payment: ${bookingData.payment === 'hotel' ? 'Pay at Hotel' : 'Advance Payment'}
+
+We'll send you a confirmation email shortly. Thank you for choosing Hotel Manang Mant!`);
+            
+            closeBooking();
+            event.target.reset();
+        }
+
+        function submitContact(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const contactData = {
+                id: Date.now(),
+                name: event.target.querySelector('input[placeholder="Your Name"]').value,
+                email: event.target.querySelector('input[placeholder="Your Email"]').value,
+                subject: event.target.querySelector('input[placeholder="Subject"]').value,
+                message: event.target.querySelector('textarea[placeholder="Your Message"]').value,
+                date: new Date().toISOString(),
+                status: 'unread'
+            };
+            
+            // Store contact message in localStorage (simulating MySQL database)
+            const contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
+            contacts.push(contactData);
+            localStorage.setItem('contacts', JSON.stringify(contacts));
+            
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+            event.target.reset();
+        }
+
+        function updateLoginButton() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginButtons = document.querySelectorAll('button[onclick="showLogin()"]');
+            loginButtons.forEach(button => {
+                if (isLoggedIn) {
+                    button.innerHTML = '<i class="fas fa-user mr-2"></i>My Account';
+                    button.onclick = showAccount;
+                } else {
+                    button.innerHTML = '<i class="fas fa-sign-in-alt mr-2"></i>Login';
+                    button.onclick = showLogin;
+                }
+            });
+        }
+
+        function showAccount() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const currentUser = users[users.length - 1]; // Get last registered user (simple demo)
+            
+            const accountInfo = currentUser ? 
+                `Welcome ${currentUser.fullName}!\n\nAccount Details:\n- Email: ${currentUser.email}\n- Phone: ${currentUser.phone}\n- Member since: ${new Date(currentUser.registrationDate).toLocaleDateString()}\n\nWould you like to logout?` :
+                'Welcome back!\n\nWould you like to logout?';
+            
+            if (confirm(accountInfo)) {
+                logout();
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            updateLoginButton();
+            checkLoginStatus();
+            alert('You have been logged out successfully!');
+        }
+
+        function openMap() {
+            window.open('https://maps.google.com/?q=Manang,Nepal', '_blank', 'noopener,noreferrer');
+        }
+
+        // Check login status and show/hide content
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const mainContent = document.querySelectorAll('section:not(#loginSection)');
+            const loginSection = document.getElementById('loginSection');
+            const navigation = document.querySelector('nav');
+            
+            if (!isLoggedIn) {
+                // Hide all main content
+                mainContent.forEach(section => {
+                    section.style.display = 'none';
+                });
+                // Show login section
+                if (loginSection) {
+                    loginSection.style.display = 'flex';
+                }
+                // Hide navigation links but keep login/admin buttons visible
+                const navLinks = navigation.querySelectorAll('a[href^="#"]');
+                navLinks.forEach(link => {
+                    link.style.display = 'none';
+                });
+                // Ensure admin button stays visible
+                const adminButton = navigation.querySelector('button[onclick="showAdminLogin()"]');
+                if (adminButton) {
+                    adminButton.style.display = 'inline-block';
+                }
+            } else {
+                // Show all main content
+                mainContent.forEach(section => {
+                    section.style.display = 'block';
+                });
+                // Hide login section
+                if (loginSection) {
+                    loginSection.style.display = 'none';
+                }
+                // Show navigation
+                const navLinks = navigation.querySelectorAll('a[href^="#"]');
+                navLinks.forEach(link => {
+                    link.style.display = 'inline-block';
+                });
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Clear any existing login state for demo
+            localStorage.removeItem('isLoggedIn');
+            
+            checkLoginStatus();
+            updateLoginButton();
+            
+            // Set minimum date for booking to today
+            const today = new Date().toISOString().split('T')[0];
+            document.querySelectorAll('input[type="date"]').forEach(input => {
+                input.min = today;
+            });
+        });
+
+        // Admin Panel Functions
+        function showAdminLogin() {
+            document.getElementById('adminLoginModal').classList.remove('hidden');
+        }
+
+        function closeAdminLogin() {
+            document.getElementById('adminLoginModal').classList.add('hidden');
+        }
+
+        function handleAdminLogin(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            // Check admin credentials (in real app, this would be server-side)
+            if (username === 'admin' && password === 'admin123') {
+                // Store admin session
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                
+                // Close login modal and show admin panel
+                closeAdminLogin();
+                showAdminPanel();
+                
+                // Clear form
+                document.getElementById('adminUsername').value = '';
+                document.getElementById('adminPassword').value = '';
+                
+                alert('Admin login successful! Welcome to the admin panel.');
+            } else {
+                alert('Invalid credentials! Please use:\nUsername: admin\nPassword: admin123');
+            }
+        }
+
+        function showAdminPanel() {
+            // Check if admin is logged in
+            if (sessionStorage.getItem('adminLoggedIn') !== 'true') {
+                showAdminLogin();
+                return;
+            }
+            
+            document.getElementById('adminModal').classList.remove('hidden');
+            loadAdminData();
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('adminModal').classList.add('hidden');
+            // Clear admin session when closing panel
+            sessionStorage.removeItem('adminLoggedIn');
+        }
+
+        function showBookingsData() {
+            // Update tab buttons
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('bg-blue-600', 'text-white');
+
+            // Show/hide content
+            document.querySelectorAll('.admin-content').forEach(content => content.classList.add('hidden'));
+            document.getElementById('bookingsTable').classList.remove('hidden');
+            
+            loadBookingsData();
+        }
+
+        function showContactsData() {
+            // Update tab buttons
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('bg-blue-600', 'text-white');
+
+            // Show/hide content
+            document.querySelectorAll('.admin-content').forEach(content => content.classList.add('hidden'));
+            document.getElementById('contactsTable').classList.remove('hidden');
+            
+            loadContactsData();
+        }
+
+        function showUsersData() {
+            // Update tab buttons
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('bg-blue-600', 'text-white');
+
+            // Show/hide content
+            document.querySelectorAll('.admin-content').forEach(content => content.classList.add('hidden'));
+            document.getElementById('usersTable').classList.remove('hidden');
+            
+            loadUsersData();
+        }
+
+        function loadAdminData() {
+            loadBookingsData();
+            updateStats();
+        }
+
+        function loadBookingsData() {
+            const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+            const tbody = document.getElementById('bookingsTableBody');
+            
+            if (bookings.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="11" class="border border-gray-300 px-4 py-8 text-center text-gray-500">No bookings found. Make a test booking to see data here!</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = bookings.map(booking => `
+                <tr class="hover:bg-gray-50">
+                    <td class="border border-gray-300 px-4 py-2">${booking.id}</td>
+                    <td class="border border-gray-300 px-4 py-2">${booking.name}</td>
+                    <td class="border border-gray-300 px-4 py-2">${booking.email}</td>
+                    <td class="border border-gray-300 px-4 py-2">${booking.phone}</td>
+                    <td class="border border-gray-300 px-4 py-2">${booking.roomType}</td>
+                    <td class="border border-gray-300 px-4 py-2">${booking.checkIn}</td>
+                    <td class="border border-gray-300 px-4 py-2">${booking.checkOut}</td>
+                    <td class="border border-gray-300 px-4 py-2">${booking.guests}</td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        <span class="px-2 py-1 rounded text-xs ${booking.payment === 'hotel' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'}">
+                            ${booking.payment === 'hotel' ? 'Pay at Hotel' : 'Advance Payment'}
+                        </span>
+                    </td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        <span class="px-2 py-1 rounded text-xs bg-green-100 text-green-800">${booking.status}</span>
+                    </td>
+                    <td class="border border-gray-300 px-4 py-2">${new Date(booking.date).toLocaleDateString()}</td>
+                </tr>
+            `).join('');
+        }
+
+        function loadContactsData() {
+            const contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
+            const tbody = document.getElementById('contactsTableBody');
+            
+            if (contacts.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="border border-gray-300 px-4 py-8 text-center text-gray-500">No contact messages found. Send a test message to see data here!</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = contacts.map(contact => `
+                <tr class="hover:bg-gray-50">
+                    <td class="border border-gray-300 px-4 py-2">${contact.id}</td>
+                    <td class="border border-gray-300 px-4 py-2">${contact.name}</td>
+                    <td class="border border-gray-300 px-4 py-2">${contact.email}</td>
+                    <td class="border border-gray-300 px-4 py-2">${contact.subject}</td>
+                    <td class="border border-gray-300 px-4 py-2 max-w-xs truncate">${contact.message}</td>
+                    <td class="border border-gray-300 px-4 py-2">${new Date(contact.date).toLocaleDateString()}</td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        <span class="px-2 py-1 rounded text-xs ${contact.status === 'unread' ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}">
+                            ${contact.status}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function loadUsersData() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const tbody = document.getElementById('usersTableBody');
+            
+            if (users.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="border border-gray-300 px-4 py-8 text-center text-gray-500">No registered users found. Register a test user to see data here!</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = users.map(user => `
+                <tr class="hover:bg-gray-50">
+                    <td class="border border-gray-300 px-4 py-2">${user.id}</td>
+                    <td class="border border-gray-300 px-4 py-2">${user.fullName}</td>
+                    <td class="border border-gray-300 px-4 py-2">${user.email}</td>
+                    <td class="border border-gray-300 px-4 py-2">${user.phone}</td>
+                    <td class="border border-gray-300 px-4 py-2">${new Date(user.registrationDate).toLocaleDateString()}</td>
+                    <td class="border border-gray-300 px-4 py-2">${new Date(user.lastLogin).toLocaleDateString()}</td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        <span class="px-2 py-1 rounded text-xs bg-green-100 text-green-800">${user.status}</span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function updateStats() {
+            const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+            const contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+            document.getElementById('totalBookings').textContent = bookings.length;
+            document.getElementById('totalContacts').textContent = contacts.length;
+            document.getElementById('totalUsers').textContent = users.length;
+        }
+
+        function exportData() {
+            const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+            const contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+            const exportData = {
+                bookings: bookings,
+                contacts: contacts,
+                users: users,
+                exportDate: new Date().toISOString(),
+                totalRecords: bookings.length + contacts.length + users.length
+            };
+
+            const dataStr = JSON.stringify(exportData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `hotel_manang_mant_data_${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            
+            URL.revokeObjectURL(url);
+            alert('Data exported successfully! Check your downloads folder.');
+        }
+
+        // Gallery Functions
+        let currentRoomType = '';
+        
+        function openGallery(type) {
+            const modal = document.getElementById('galleryModal');
+            const title = document.getElementById('galleryTitle');
+            const description = document.getElementById('galleryDescription');
+            const content = document.getElementById('galleryContent');
+            
+            const galleries = {
+                'luxury-rooms': {
+                    title: '🛏️ Luxury Rooms Collection',
+                    description: 'Experience our premium accommodations with stunning mountain views',
+                    images: generateLuxuryRoomImages()
+                },
+                'hotel-exterior': {
+                    title: '🏨 Hotel Exterior Views',
+                    description: 'Beautiful architecture nestled in the Himalayan landscape',
+                    images: generateExteriorImages()
+                },
+                'restaurant': {
+                    title: '🍽️ Restaurant & Dining',
+                    description: 'Multi-cuisine dining with panoramic mountain views',
+                    images: generateRestaurantImages()
+                },
+                'mountain-views': {
+                    title: '🏔️ Breathtaking Mountain Views',
+                    description: 'Spectacular vistas of the Annapurna range from our property',
+                    images: generateMountainImages()
+                },
+                'reception': {
+                    title: '🏛️ Reception & Lobby Area',
+                    description: 'Warm welcome in our elegantly designed reception area',
+                    images: generateReceptionImages()
+                },
+                'surroundings': {
+                    title: '🌲 Natural Surroundings',
+                    description: 'Pristine nature and hiking trails around our hotel',
+                    images: generateSurroundingImages()
+                }
+            };
+            
+            const gallery = galleries[type];
+            title.textContent = gallery.title;
+            description.textContent = gallery.description;
+            content.innerHTML = gallery.images;
+            
+            modal.classList.remove('hidden');
+        }
+        
+        function closeGallery() {
+            document.getElementById('galleryModal').classList.add('hidden');
+        }
+        
+        function openRoomGallery(roomType) {
+            currentRoomType = roomType;
+            const modal = document.getElementById('roomGalleryModal');
+            const title = document.getElementById('roomGalleryTitle');
+            const description = document.getElementById('roomGalleryDescription');
+            const content = document.getElementById('roomGalleryContent');
+            
+            const roomGalleries = {
+                'standard': {
+                    title: '🛏️ Standard Room - Detailed View',
+                    description: 'Comfortable accommodation with essential amenities and mountain views',
+                    images: generateStandardRoomGallery()
+                },
+                'deluxe': {
+                    title: '🏨 Deluxe Room - Detailed View', 
+                    description: 'Spacious room with premium amenities and panoramic mountain views',
+                    images: generateDeluxeRoomGallery()
+                },
+                'family': {
+                    title: '🏠 Family Suite - Detailed View',
+                    description: 'Perfect for families with separate living area and multiple beds',
+                    images: generateFamilyRoomGallery()
+                }
+            };
+            
+            const gallery = roomGalleries[roomType];
+            title.textContent = gallery.title;
+            description.textContent = gallery.description;
+            content.innerHTML = gallery.images;
+            
+            modal.classList.remove('hidden');
+        }
+        
+        function closeRoomGallery() {
+            document.getElementById('roomGalleryModal').classList.add('hidden');
+        }
+        
+        function bookFromGallery() {
+            const roomTypes = {
+                'standard': 'Standard Room',
+                'deluxe': 'Deluxe Room', 
+                'family': 'Family Suite'
+            };
+            
+            closeRoomGallery();
+            showBooking();
+            document.getElementById('roomType').value = roomTypes[currentRoomType];
+        }
+        
+        function generateLuxuryRoomImages() {
+            return `
+                <div class="bg-gradient-to-br from-blue-100 to-blue-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-blue-800">
+                        <i class="fas fa-bed text-4xl mb-2"></i>
+                        <p class="font-semibold">King Size Bed</p>
+                        <p class="text-sm">Premium mattress & linens</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-100 to-purple-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-purple-800">
+                        <i class="fas fa-bath text-4xl mb-2"></i>
+                        <p class="font-semibold">Luxury Bathroom</p>
+                        <p class="text-sm">Marble finish & hot tub</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-green-100 to-green-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-green-800">
+                        <i class="fas fa-mountain text-4xl mb-2"></i>
+                        <p class="font-semibold">Mountain View</p>
+                        <p class="text-sm">Panoramic Annapurna vista</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-yellow-100 to-yellow-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-yellow-800">
+                        <i class="fas fa-door-open text-4xl mb-2"></i>
+                        <p class="font-semibold">Private Balcony</p>
+                        <p class="text-sm">Personal outdoor space</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-red-100 to-red-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-red-800">
+                        <i class="fas fa-tv text-4xl mb-2"></i>
+                        <p class="font-semibold">Entertainment</p>
+                        <p class="text-sm">Smart TV & sound system</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-indigo-100 to-indigo-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-indigo-800">
+                        <i class="fas fa-coffee text-4xl mb-2"></i>
+                        <p class="font-semibold">Mini Bar</p>
+                        <p class="text-sm">Premium beverages</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateExteriorImages() {
+            return `
+                <div class="bg-gradient-to-br from-green-100 to-green-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-green-800">
+                        <i class="fas fa-building text-4xl mb-2"></i>
+                        <p class="font-semibold">Main Building</p>
+                        <p class="text-sm">Traditional Himalayan architecture</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-100 to-blue-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-blue-800">
+                        <i class="fas fa-tree text-4xl mb-2"></i>
+                        <p class="font-semibold">Garden Area</p>
+                        <p class="text-sm">Landscaped gardens</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-100 to-orange-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-orange-800">
+                        <i class="fas fa-car text-4xl mb-2"></i>
+                        <p class="font-semibold">Parking Area</p>
+                        <p class="text-sm">Secure vehicle parking</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-100 to-purple-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-purple-800">
+                        <i class="fas fa-sign text-4xl mb-2"></i>
+                        <p class="font-semibold">Hotel Entrance</p>
+                        <p class="text-sm">Grand entrance with signage</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-teal-100 to-teal-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-teal-800">
+                        <i class="fas fa-mountain text-4xl mb-2"></i>
+                        <p class="font-semibold">Mountain Backdrop</p>
+                        <p class="text-sm">Stunning Himalayan setting</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-pink-100 to-pink-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-pink-800">
+                        <i class="fas fa-sun text-4xl mb-2"></i>
+                        <p class="font-semibold">Sunrise View</p>
+                        <p class="text-sm">Morning light on building</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateRestaurantImages() {
+            return `
+                <div class="bg-gradient-to-br from-purple-100 to-purple-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-purple-800">
+                        <i class="fas fa-utensils text-4xl mb-2"></i>
+                        <p class="font-semibold">Dining Area</p>
+                        <p class="text-sm">Elegant table settings</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-100 to-orange-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-orange-800">
+                        <i class="fas fa-fire text-4xl mb-2"></i>
+                        <p class="font-semibold">Open Kitchen</p>
+                        <p class="text-sm">Live cooking experience</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-green-100 to-green-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-green-800">
+                        <i class="fas fa-wine-glass text-4xl mb-2"></i>
+                        <p class="font-semibold">Bar Counter</p>
+                        <p class="text-sm">Premium beverages</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-100 to-blue-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-blue-800">
+                        <i class="fas fa-mountain text-4xl mb-2"></i>
+                        <p class="font-semibold">Window Views</p>
+                        <p class="text-sm">Dining with mountain vista</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-yellow-100 to-yellow-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-yellow-800">
+                        <i class="fas fa-lightbulb text-4xl mb-2"></i>
+                        <p class="font-semibold">Ambient Lighting</p>
+                        <p class="text-sm">Warm dining atmosphere</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-red-100 to-red-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-red-800">
+                        <i class="fas fa-pepper-hot text-4xl mb-2"></i>
+                        <p class="font-semibold">Local Cuisine</p>
+                        <p class="text-sm">Authentic Nepali dishes</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateMountainImages() {
+            return `
+                <div class="bg-gradient-to-br from-blue-100 to-blue-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-blue-800">
+                        <i class="fas fa-mountain text-4xl mb-2"></i>
+                        <p class="font-semibold">Annapurna Range</p>
+                        <p class="text-sm">Majestic peak views</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-100 to-orange-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-orange-800">
+                        <i class="fas fa-sun text-4xl mb-2"></i>
+                        <p class="font-semibold">Sunrise Views</p>
+                        <p class="text-sm">Golden hour magic</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-100 to-purple-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-purple-800">
+                        <i class="fas fa-moon text-4xl mb-2"></i>
+                        <p class="font-semibold">Sunset Views</p>
+                        <p class="text-sm">Evening mountain silhouettes</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-white to-gray-100 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-gray-800">
+                        <i class="fas fa-snowflake text-4xl mb-2"></i>
+                        <p class="font-semibold">Snow-capped Peaks</p>
+                        <p class="text-sm">Year-round snow views</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-green-100 to-green-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-green-800">
+                        <i class="fas fa-binoculars text-4xl mb-2"></i>
+                        <p class="font-semibold">Panoramic Vista</p>
+                        <p class="text-sm">360-degree mountain views</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-teal-100 to-teal-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-teal-800">
+                        <i class="fas fa-cloud text-4xl mb-2"></i>
+                        <p class="font-semibold">Cloud Formations</p>
+                        <p class="text-sm">Dramatic sky views</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateReceptionImages() {
+            return `
+                <div class="bg-gradient-to-br from-teal-100 to-teal-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-teal-800">
+                        <i class="fas fa-door-open text-4xl mb-2"></i>
+                        <p class="font-semibold">Reception Desk</p>
+                        <p class="text-sm">24/7 front desk service</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-100 to-purple-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-purple-800">
+                        <i class="fas fa-couch text-4xl mb-2"></i>
+                        <p class="font-semibold">Lobby Seating</p>
+                        <p class="text-sm">Comfortable waiting area</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-yellow-100 to-yellow-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-yellow-800">
+                        <i class="fas fa-gem text-4xl mb-2"></i>
+                        <p class="font-semibold">Chandelier</p>
+                        <p class="text-sm">Elegant lighting fixture</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-green-100 to-green-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-green-800">
+                        <i class="fas fa-leaf text-4xl mb-2"></i>
+                        <p class="font-semibold">Indoor Plants</p>
+                        <p class="text-sm">Natural ambiance</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-100 to-blue-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-blue-800">
+                        <i class="fas fa-info-circle text-4xl mb-2"></i>
+                        <p class="font-semibold">Information Desk</p>
+                        <p class="text-sm">Tourist information center</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-red-100 to-red-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-red-800">
+                        <i class="fas fa-wifi text-4xl mb-2"></i>
+                        <p class="font-semibold">WiFi Lounge</p>
+                        <p class="text-sm">High-speed internet area</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateSurroundingImages() {
+            return `
+                <div class="bg-gradient-to-br from-green-100 to-green-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-green-800">
+                        <i class="fas fa-tree text-4xl mb-2"></i>
+                        <p class="font-semibold">Forest Trails</p>
+                        <p class="text-sm">Hiking paths through woods</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-100 to-blue-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-blue-800">
+                        <i class="fas fa-water text-4xl mb-2"></i>
+                        <p class="font-semibold">Mountain Stream</p>
+                        <p class="text-sm">Crystal clear water</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-yellow-100 to-yellow-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-yellow-800">
+                        <i class="fas fa-seedling text-4xl mb-2"></i>
+                        <p class="font-semibold">Alpine Meadows</p>
+                        <p class="text-sm">Wildflower fields</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-gray-100 to-gray-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-gray-800">
+                        <i class="fas fa-mountain text-4xl mb-2"></i>
+                        <p class="font-semibold">Rock Formations</p>
+                        <p class="text-sm">Natural stone sculptures</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-100 to-orange-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-orange-800">
+                        <i class="fas fa-hiking text-4xl mb-2"></i>
+                        <p class="font-semibold">Trekking Routes</p>
+                        <p class="text-sm">Adventure trails nearby</p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-100 to-purple-200 h-48 rounded-lg flex items-center justify-center">
+                    <div class="text-center text-purple-800">
+                        <i class="fas fa-star text-4xl mb-2"></i>
+                        <p class="font-semibold">Stargazing Spots</p>
+                        <p class="text-sm">Clear night sky views</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateStandardRoomGallery() {
+            return `
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-br from-blue-100 to-blue-200 h-64 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-blue-800">
+                            <i class="fas fa-bed text-5xl mb-3"></i>
+                            <p class="text-xl font-semibold">Comfortable Double Bed</p>
+                            <p class="text-sm">Quality mattress with fresh linens</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-100 to-green-200 h-48 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-green-800">
+                            <i class="fas fa-mountain text-4xl mb-2"></i>
+                            <p class="font-semibold">Mountain View Window</p>
+                            <p class="text-sm">Beautiful Annapurna views</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-br from-purple-100 to-purple-200 h-48 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-purple-800">
+                            <i class="fas fa-bath text-4xl mb-2"></i>
+                            <p class="font-semibold">Private Bathroom</p>
+                            <p class="text-sm">Hot shower & toiletries</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-100 to-orange-200 h-64 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-orange-800">
+                            <i class="fas fa-tv text-5xl mb-3"></i>
+                            <p class="text-xl font-semibold">LED TV & WiFi</p>
+                            <p class="text-sm">Entertainment & connectivity</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateDeluxeRoomGallery() {
+            return `
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-br from-purple-100 to-purple-200 h-64 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-purple-800">
+                            <i class="fas fa-bed text-5xl mb-3"></i>
+                            <p class="text-xl font-semibold">King Size Luxury Bed</p>
+                            <p class="text-sm">Premium mattress & luxury linens</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-100 to-blue-200 h-48 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-blue-800">
+                            <i class="fas fa-door-open text-4xl mb-2"></i>
+                            <p class="font-semibold">Private Balcony</p>
+                            <p class="text-sm">Personal outdoor space</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-br from-green-100 to-green-200 h-48 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-green-800">
+                            <i class="fas fa-coffee text-4xl mb-2"></i>
+                            <p class="font-semibold">Mini Bar</p>
+                            <p class="text-sm">Premium beverages</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-yellow-100 to-yellow-200 h-64 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-yellow-800">
+                            <i class="fas fa-mountain text-5xl mb-3"></i>
+                            <p class="text-xl font-semibold">Panoramic Mountain Views</p>
+                            <p class="text-sm">Floor-to-ceiling windows</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateFamilyRoomGallery() {
+            return `
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-br from-green-100 to-green-200 h-64 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-green-800">
+                            <i class="fas fa-home text-5xl mb-3"></i>
+                            <p class="text-xl font-semibold">Spacious Living Area</p>
+                            <p class="text-sm">Separate lounge with sofa</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-100 to-orange-200 h-48 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-orange-800">
+                            <i class="fas fa-utensils text-4xl mb-2"></i>
+                            <p class="font-semibold">Kitchenette</p>
+                            <p class="text-sm">Basic cooking facilities</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-br from-blue-100 to-blue-200 h-48 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-blue-800">
+                            <i class="fas fa-bed text-4xl mb-2"></i>
+                            <p class="font-semibold">Multiple Beds</p>
+                            <p class="text-sm">Master bed + bunk beds</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-100 to-purple-200 h-64 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-purple-800">
+                            <i class="fas fa-users text-5xl mb-3"></i>
+                            <p class="text-xl font-semibold">Family Dining Area</p>
+                            <p class="text-sm">Table for 6 people</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(event) {
+            const modals = ['loginModal', 'registerModal', 'bookingModal', 'adminModal', 'adminLoginModal', 'galleryModal', 'roomGalleryModal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target === modal) {
+                    modal.classList.add('hidden');
+                    // Clear admin session if closing admin panel
+                    if (modalId === 'adminModal') {
+                        sessionStorage.removeItem('adminLoggedIn');
+                    }
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-white', 'shadow-lg');
+            } else {
+                nav.classList.add('bg-white', 'shadow-lg');
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9892446d67e190d6',t:'MTc1OTU1NTYxNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
